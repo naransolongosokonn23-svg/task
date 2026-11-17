@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { Link } from "react-router";
 const nav = [
   "Projects",
   "Tasks",
@@ -9,18 +11,50 @@ const nav = [
   "Settings",
 ];
 
+const dashboardItems = [
+  { label: "Overview" },
+  { label: "My Tasks", count: 6 },
+  { label: "Activity" },
+];
+
 export default function Sidebar() {
+  const [dashboardOpen, setDashboardOpen] = useState(true);
+  const [active, setActive] = useState("My Tasks");
+
   return (
     <aside className="sidebar">
       <div className="logo">◍ Atlas</div>
+
       <div className="nav-group">
-        <div className="nav-item">Dashboard ⌃</div>
-        <div className="nav-sub">Overview</div>
-        <div className="nav-sub active">
-          My Tasks <span className="count">6</span>
+        <Link to="/dashboard" className="nav-item">
+          Dashboard
+        </Link>
+        <Link to="/task" className="nav-item">
+          Tasks
+        </Link>
+        <Link to="/user" className="nav-item">
+          User
+        </Link>
+        <div
+          className="nav-item"
+          onClick={() => setDashboardOpen(!dashboardOpen)}
+        >
+          Dashboard <span>{dashboardOpen ? "⌃" : "⌄"}</span>
         </div>
-        <div className="nav-sub">Activity</div>
+
+        {dashboardOpen &&
+          dashboardItems.map((item) => (
+            <div
+              key={item.label}
+              className={`nav-sub ${active === item.label ? "active" : ""}`}
+              onClick={() => setActive(item.label)}
+            >
+              {item.label}
+              {item.count && <span className="count">{item.count}</span>}
+            </div>
+          ))}
       </div>
+
       {nav.map((n) => (
         <div key={n} className="nav-item">
           {n} <span>⌄</span>

@@ -1,19 +1,18 @@
-import Sidebar from "./components/Sidebar";
-import Topbar from "./components/Topbar";
-import MyTasks from "./pages/MyTasks";
-import "./styles/global.css";
+import { Routes, Route } from "react-router";
+import Layout from "./components/Layout";
+import Dashboard from "./pages/Dashboard";
+import User from "./pages/User";
+import Task from "./pages/Task";
 
-function App() {
+export default function App() {
   return (
-    <div className="layout">
-      <Sidebar />
-
-      <main className="main">
-        <Topbar />
-        <MyTasks />
-      </main>
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/task" element={<Task />} />
+      </Route>
+    </Routes>
   );
 }
-
-export default App;
