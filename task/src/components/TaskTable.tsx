@@ -7,7 +7,7 @@ export default function TaskTable({ tasks }: { tasks: Task[] }) {
     <table className="table">
       <thead>
         <tr>
-          <th>Task Title</th>
+          <th>Task  Title</th>
           <th>Project</th>
           <th>Due Date</th>
           <th>Status</th>

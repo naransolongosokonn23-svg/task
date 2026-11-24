@@ -42,7 +42,7 @@ export default function MyTasks() {
       <footer className="pager">
         <span>‹</span>
         <b>1</b>
-        <span>2</span>
+        <span>2222222222222222222</span>
         <span>›</span>
         <em>Total {tasks.length} Data</em>
       </footer>
